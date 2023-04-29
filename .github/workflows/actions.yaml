@@ -29,5 +29,5 @@ jobs:
       - name: push changes
         uses: satoshi-sh/baseball-git-scraper
         with:
-            github_token: ${{ secrets.GITHUB_TOKEN}}
-            branch:main
+          github_token: ${{ secrets.GITHUB_TOKEN}}
+          branch: main
