@@ -24,8 +24,9 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          timestamp=$(date -u)
           git add -A
-          git diff-index --quiet HEAD || (git commit -a -m "Add more data" --allow-empty)
+          git diff-index --quiet HEAD || (git commit -a -m "Add more data ${timestamp}" --allow-empty)
       - name: push changes
         uses: satoshi-sh/baseball-git-scraper
         with:
