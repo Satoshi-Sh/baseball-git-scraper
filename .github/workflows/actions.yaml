@@ -26,9 +26,8 @@ jobs:
           git config --local user.name "GitHub Action"
           timestamp=$(date -u)
           git add -A
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$baseball-git-scraper
           git diff-index --quiet HEAD || (git commit -a -m "Add more data ${timestamp}" --allow-empty)
       - name: push changes
-        uses: satoshi-sh/baseball-git-scraper@0.1.0
-        with:
-          github_token: ${{ secrets.GH_PAT }}
-          branch: main
+        run: |
+          git push
