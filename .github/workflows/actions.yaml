@@ -9,7 +9,11 @@ jobs:
     steps:
       - name: checkout repo content
         uses: actions/checkout@v3
-
+      - name: Run action
+        uses: satoshi-sh/baseball-git-scraper@0.1.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN}}
+          branch: main
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -27,8 +31,4 @@ jobs:
           timestamp=$(date -u)
           git add -A
           git diff-index --quiet HEAD || (git commit -a -m "Add more data ${timestamp}" --allow-empty)
-      - name: push changes
-        uses: satoshi-sh/baseball-git-scraper@0.1.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN}}
-          branch: main
+          git push
