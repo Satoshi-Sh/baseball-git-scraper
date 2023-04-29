@@ -20,10 +20,14 @@ jobs:
           pip install -r requirements.txt
       - name: execute py script
         run: python main.py
-      - name: commit files and push
+      - name: commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
           git diff-index --quiet HEAD || (git commit -a -m "Add more data" --allow-empty)
-          git push
+      - name: push changes
+        uses: satoshi-sh/baseball-git-scraper
+        with:
+            github_token: ${{ secrets.GITHUB_TOKEN}}
+            branch:main
