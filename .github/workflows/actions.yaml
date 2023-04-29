@@ -8,12 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo content
-        uses: actions/checkout@v2
-      - name: Run action
-        uses: satoshi-sh/baseball-git-scraper@0.1.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN}}
-          branch: main
+        uses: actions/checkout@v3
+
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -32,3 +28,8 @@ jobs:
           git add -A
           git diff-index --quiet HEAD || (git commit -a -m "Add more data ${timestamp}" --allow-empty)
           git push
+      - name: push changes
+        uses: satoshi-sh/baseball-git-scraper@0.1.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN}}
+          branch: main
