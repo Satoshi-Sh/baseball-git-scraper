@@ -28,5 +28,7 @@ jobs:
           git add -A
           git diff-index --quiet HEAD || (git commit -a -m "Add more data ${timestamp}" --allow-empty)
       - name: push changes
-        run: |
-          git push
+        uses: satoshi-sh/baseball-git-scraper@0.1.0
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          branch: main
