@@ -3,7 +3,7 @@ import pandas as pd
 # read data
 
 central = pd.read_csv('./data/central.csv',index_col=False)
-pacific = pd.read_csv('/data/pacific.csv',index_col=False)
+pacific = pd.read_csv('./data/pacific.csv',index_col=False)
 
 url = 'https://baseball.yahoo.co.jp/npb/standings/'
 encoding = 'utf-8'
@@ -27,5 +27,5 @@ full_pacific.drop_duplicates(subset=['順位', 'チーム名', '試合', '勝利
        '本塁打', '盗塁', '打率', '防御率', '失策'],inplace=True)
 
 
-full_central.to_csv('data/central.csv',index=False)
-full_pacific.to_csv('data/pacific.csv',index=False)
+full_central.to_csv('./data/central.csv',index=False)
+full_pacific.to_csv('./data/pacific.csv',index=False)
