@@ -4,7 +4,7 @@ on:
     - cron:  '0 10 * * *'
 jobs:
   build:
-     runs-on:ubunt-latest
+     runs-on: ubuntu-latest
      steps:
         - name:checkout repo content
           uses:actions/checkout@v2 
