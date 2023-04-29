@@ -28,4 +28,4 @@ full_pacific.drop_duplicates(subset=['順位', 'チーム名', '試合', '勝利
 
 
 full_central.to_csv('./data/central.csv',index=False)
-full_pacific.to_csv('./data/pacific.csv',index=False)
+full_pacific.to_csv('./data/pacifics.csv',index=False)
