@@ -18,7 +18,18 @@ new_pacific['date']= datetime.today()
 
 ## combine old and new 
 full_central = pd.concat([central,new_central]).reset_index(drop=True)
+# Sometimes number is not updated yet
+full_central = full_central.drop(full_central[full_central['打率'] == '-'].index)
+full_central['打率'] = full_central['打率'].astype(float)
+full_central = full_central.drop(full_central[full_central['防御率'] == '-'].index)
+full_central['防御率'] = full_central['防御率'].astype(float)
+
 full_pacific = pd.concat([pacific,new_pacific]).reset_index(drop=True)
+# Sometimes number is not updated yet
+full_pacific = full_pacific.drop(full_pacific[full_pacific['打率'] == '-'].index)
+full_pacific['打率'] = full_pacific['打率'].astype(float)
+full_pacific = full_pacific.drop(full_pacific[full_pacific['防御率'] == '-'].index)
+full_pacific['防御率'] = full_pacific['防御率'].astype(float)
 
 # remove duplicates
 full_central.drop_duplicates(subset=['順位', 'チーム名', '試合', '勝利', '敗戦', '引分', '勝率', '勝差', '残試合', '得点', '失点',
