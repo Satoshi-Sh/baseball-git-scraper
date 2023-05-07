@@ -24,10 +24,10 @@ df = pd.read_csv(f"./data/{selected_league.lower()}.csv")
 
 
 df['date'] = pd.to_datetime(df['date'])
-print(df.dtypes)
+
 
 # Display the original DataFrame
-st.dataframe(df.tail(6))
+st.dataframe(df.drop_duplicates(subset=['チーム名'],keep='last').sort_values('順位'))
 
 
 
